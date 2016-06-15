@@ -1,0 +1,75 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://services.orcsoft.co.th/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http"
+	name="HelloWorldService" targetNamespace="http://services.orcsoft.co.th/">
+	<wsdl:types>
+		<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+			xmlns:tns="http://services.orcsoft.co.th/" elementFormDefault="unqualified"
+			targetNamespace="http://services.orcsoft.co.th/" version="1.0">
+			<xs:element name="helloOrcsoft" type="tns:helloOrcsoft" />
+			<xs:element name="helloOrcsoftResponse" type="tns:helloOrcsoftResponse" />
+			<xs:element name="helloRequest" type="tns:helloRequest" />
+			<xs:element name="helloResponse" type="tns:helloResponse" />
+			<xs:element name="helloResponseHeader" type="tns:helloResponseHeader" />
+			<xs:complexType name="helloOrcsoft">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="HelloRequest" type="tns:helloRequest" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="helloRequest">
+				<xs:sequence>
+					<xs:element name="Name" type="xs:string" />
+					<xs:element name="Surname" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="helloOrcsoftResponse">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="HelloResponse" type="tns:helloResponse" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="helloResponse">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="HelloResponseHeader"
+						type="tns:helloResponseHeader" />
+					<xs:element minOccurs="0" name="HelloText" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="helloResponseHeader">
+				<xs:sequence>
+					<xs:element name="StatusCode" type="xs:int" />
+					<xs:element minOccurs="0" name="StatusText" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+		</xs:schema>
+	</wsdl:types>
+	<wsdl:message name="helloOrcsoftResponse">
+		<wsdl:part element="tns:helloOrcsoftResponse" name="parameters"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="helloOrcsoft">
+		<wsdl:part element="tns:helloOrcsoft" name="parameters"></wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="HelloWorld">
+		<wsdl:operation name="helloOrcsoft">
+			<wsdl:input message="tns:helloOrcsoft" name="helloOrcsoft"></wsdl:input>
+			<wsdl:output message="tns:helloOrcsoftResponse" name="helloOrcsoftResponse"></wsdl:output>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="HelloWorldServiceSoapBinding" type="tns:HelloWorld">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="helloOrcsoft">
+			<soap:operation soapAction="" style="document" />
+			<wsdl:input name="helloOrcsoft">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="helloOrcsoftResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="HelloWorldService">
+		<wsdl:port binding="tns:HelloWorldServiceSoapBinding" name="HelloWorldPort">
+			<soap:address location="http://localhost:8080/HelloServices/HelloWorld" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

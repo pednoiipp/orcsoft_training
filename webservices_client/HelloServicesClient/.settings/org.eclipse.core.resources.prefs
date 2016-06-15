@@ -1,0 +1,8 @@
+eclipse.preferences.version=1
+encoding//src/th/co/orcsoft/services/HelloRequest.java=UTF-8
+encoding//src/th/co/orcsoft/services/HelloResponse.java=UTF-8
+encoding//src/th/co/orcsoft/services/HelloResponseHeader.java=UTF-8
+encoding//src/th/co/orcsoft/services/HelloWorld.java=UTF-8
+encoding//src/th/co/orcsoft/services/HelloWorldService.java=UTF-8
+encoding//src/th/co/orcsoft/services/HelloWorldServiceLocator.java=UTF-8
+encoding//src/th/co/orcsoft/services/HelloWorldServiceSoapBindingStub.java=UTF-8
